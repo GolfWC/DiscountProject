@@ -1,0 +1,30 @@
+package pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import utility.Driver;
+
+public class Home {
+
+	public Home() {
+		
+		PageFactory.initElements(Driver.getDriver(),this);
+	}
+	
+	
+	@FindBy (xpath = "//span[@id='catnav-primary-link-10923']")
+	public WebElement clothingLink;
+	
+	@FindBy (xpath = "//input[@id='join_neu_email_field']")
+	public WebElement userName;
+	
+	@FindBy (xpath = "//input[@id='join_neu_password_field']")
+	public WebElement password;
+	
+	@FindBy (xpath = "//div[@class='wt-validation']")
+	public WebElement signInButton;
+	
+	
+}

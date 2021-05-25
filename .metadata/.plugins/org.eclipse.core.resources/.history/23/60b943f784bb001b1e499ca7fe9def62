@@ -1,0 +1,35 @@
+package pages;
+
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import testBase.Driver;
+
+
+public class HomePage {
+	
+	public HomePage() {
+		
+		PageFactory.initElements(Driver.getDriver(),this);
+	}
+	
+	@FindBy (xpath = "(//a[@title='Dresses'])[2]")
+	public WebElement dress;
+	
+	@FindBy (xpath ="//ul[@class='product_list grid row']/li")
+	public List<WebElement> items;
+	
+	@FindBy (xpath = "//div/a/span[contains(text(),'Add to cart')]")
+	public List<WebElement> addToCart;
+	
+	@FindBy(xpath="//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/span/span")
+	public WebElement continueShoppingButton;
+	
+	@FindBy(id="category")
+	public WebElement cartButton;
+	
+}
+

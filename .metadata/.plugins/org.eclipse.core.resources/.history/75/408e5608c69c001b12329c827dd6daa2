@@ -1,0 +1,11 @@
+
+package team.irfan;
+
+public class GithubDemo {
+	public static void main(String[] args) {
+		System.out.println("Testing github");
+		for(int i =0; i <5 ; i++) {
+			System.out.println("Golf Java Test 333");
+		}
+	}
+}

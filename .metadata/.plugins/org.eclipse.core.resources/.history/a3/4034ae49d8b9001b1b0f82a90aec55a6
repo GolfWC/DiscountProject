@@ -1,0 +1,28 @@
+package pages;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import utility.BrowserUtility;
+import utility.Driver;
+
+public class HomePagePage {
+public HomePagePage() {
+		
+		PageFactory.initElements(Driver.getDriver(),this);
+	}
+
+	@FindBy (xpath="//span[@id='catnav-primary-link-10923']")
+	public WebElement clothButton;
+	
+	@FindBy (xpath="//li [@data-node-id='10936']/span")
+	public WebElement men;
+	
+	@FindBy (xpath = "//a[@id='catnav-l4-10938']")
+	public WebElement shirt;
+	
+	
+	
+	
+}

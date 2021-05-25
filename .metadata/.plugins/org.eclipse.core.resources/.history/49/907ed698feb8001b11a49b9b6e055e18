@@ -1,0 +1,18 @@
+package excelTest;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+public class ExcelTest1 {
+
+	public static void main(String[] args) throws FileNotFoundException {
+		
+		//path the excel file
+		FileInputStream fs = new FileInputStream("src/test/resources/testData/TestData.xlsx");
+		
+		//creating a workbook
+		XSSFWorkbook  workbook = new XSSFWorkbook(fs);
+
+	}
+
+}

@@ -1,0 +1,36 @@
+package test;
+
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import testBase.ConficReader;
+import testBase.Driver;
+import utility.BrowserUtility;
+import utility.ListenerTestNG;
+
+
+
+@Listeners(ListenerTestNG.class)
+public class HomeTest {
+	@BeforeMethod
+	public void windowSetup() {
+		
+		Driver.getDriver().get(ConficReader.getProperty("url"));
+		Driver.getDriver().manage().deleteAllCookies();
+		Driver.getDriver().manage().window().maximize();
+		BrowserUtility.waitForPageToLoad(3);
+		
+	}
+
+	
+	public void homeVerify() {
+		
+		
+	}
+	@AfterTest
+	public static void afterTest() {
+		
+		Driver.closerDriver();
+	}
+	
+}

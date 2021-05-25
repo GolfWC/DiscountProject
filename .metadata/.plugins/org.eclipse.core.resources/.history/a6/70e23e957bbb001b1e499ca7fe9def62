@@ -1,0 +1,26 @@
+package pages;
+
+import java.util.List;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import testBase.Driver;
+
+
+public class HomePage {
+	
+	public HomePage() {
+		
+		PageFactory.initElements(Driver.getDriver(),this);
+	}
+	
+	@FindBy (xpath = "(//a[@title='Dresses'])[2]")
+	public WebElement dress;
+	
+	@FindBy (xpath ="//ul[@class='product_list grid row']/li")
+	public List<WebElement> items;
+	
+}
+

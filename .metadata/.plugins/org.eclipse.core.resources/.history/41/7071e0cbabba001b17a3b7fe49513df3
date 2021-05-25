@@ -1,0 +1,110 @@
+package projectTest;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
+import org.junit.Assert;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import pages.HomePagePage;
+import utility.BrowserUtility;
+import utility.ConficReader;
+import utility.Driver;
+import utility.ListenersTestNG;
+
+
+@Listeners(ListenersTestNG.class)
+public class HomePage {
+	
+	 HomePagePage home = new HomePagePage();
+	 Actions action = new Actions(Driver.getDriver());
+	 
+		@BeforeMethod
+		public void windowSetup() {
+			
+			Driver.getDriver().get(ConficReader.getProperty("url"));
+			Driver.getDriver().manage().deleteAllCookies();
+			Driver.getDriver().manage().window().maximize();
+			BrowserUtility.waitForPageToLoad(3);
+		}
+	
+		
+		@Test
+		public void test1() throws InterruptedException {
+			
+			WebElement element = home.clothButton;
+			action.moveToElement(element).build().perform();
+			
+			BrowserUtility.waitFor(5);
+			
+			WebElement element1 = home.menLink;
+			action.moveToElement(element1).build().perform();
+			
+			BrowserUtility.waitFor(5);
+			WebElement element2 = home.shirtLink;
+			action.moveToElement(element2).click().perform();
+			
+			
+//			HashMap<String, String> map = new HashMap<String, String>();
+//			List<WebElement> list = home.itemPrice;
+//			List<WebElement> list1 = home.productName;
+//			
+//			for(int i = 0 ; i < list.size(); i++) {
+//				
+//				map.put(list.get(i).getText(), list1.get(i).getText());
+//				
+//			System.out.println(map.put(list.get(i).getText(),"/n" +list1.get(i).getText()));
+//				
+//			}
+			
+			
+			
+			
+			List<WebElement> list = home.itemPrice;
+			System.out.println(list.get(0).getText());
+			double max =Double.parseDouble((list.get(0).getText()));
+			double min = Double.parseDouble((list.get(0).getText()));
+			
+			for(WebElement elementPrice : list) {				
+				String num = elementPrice.getText();
+				
+//				System.out.println(num);
+				double price = Double.parseDouble(num);
+				 max = price;
+				 min = price;
+				if(price > max) {
+					max = price;
+					
+				}
+				if(price < min) {
+					
+					min = price;
+				}
+				
+				
+			}
+			
+			System.out.println("Max item price is " + max);
+			System.out.println("Min item price is " + min);
+		double expectPrice = 62.38;
+		double actualPrice = max;
+				
+//		Assert.assertEquals(expectPrice, actualPrice);	 
+		
+		
+		}
+		
+//		@AfterTest
+//		public static void afterTest() {
+//			
+//			Driver.closerDriver();
+//		}
+		
+
+}

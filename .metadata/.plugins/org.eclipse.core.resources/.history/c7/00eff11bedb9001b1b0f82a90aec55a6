@@ -1,0 +1,81 @@
+package projectTest;
+
+import java.util.List;
+
+import org.apache.poi.util.SystemOutLogger;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+import pages.HomePagePage;
+import utility.BrowserUtility;
+import utility.ConficReader;
+import utility.Driver;
+import utility.ListenersTestNG;
+
+
+@Listeners(ListenersTestNG.class)
+public class HomePage {
+	
+	 HomePagePage home = new HomePagePage();
+	 Actions action = new Actions(Driver.getDriver());
+	 
+		@BeforeMethod
+		public void windowSetup() {
+			
+			Driver.getDriver().get(ConficReader.getProperty("url"));
+			Driver.getDriver().manage().deleteAllCookies();
+			Driver.getDriver().manage().window().maximize();
+			BrowserUtility.waitForPageToLoad(3);
+		}
+	
+		@Test
+		public void test1() throws InterruptedException {
+			
+			WebElement element = home.clothButton;
+			action.moveToElement(element).build().perform();
+			
+			BrowserUtility.waitFor(5);
+			
+			WebElement element1 = home.menLink;
+			action.moveToElement(element1).build().perform();
+			
+			BrowserUtility.waitFor(5);
+			WebElement element2 = home.shirtLink;
+			action.moveToElement(element2).click().perform();
+			
+			List<WebElement> list = home.itemPrice;
+			
+			double max =0;
+			
+			for(WebElement elementPrice : list) {
+				
+				String num = elementPrice.getText();
+//				System.out.println(num);
+				double price = Double.parseDouble(num);
+				
+				if(price > max) {
+					max = price;
+					
+				}
+				
+				
+			}
+			System.out.println("Max item price is " + max);
+			
+			 
+			 
+			
+		}
+		
+//		@AfterTest
+//		public static void afterTest() {
+//			
+//			Driver.closerDriver();
+//		}
+//		
+
+}
