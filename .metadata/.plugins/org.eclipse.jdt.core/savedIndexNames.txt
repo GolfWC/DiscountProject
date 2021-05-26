@@ -1,7 +1,6 @@
 INDEX VERSION 1.131+C:\Users\Golf_\Desktop\GitHubTestWorkSpace\.metadata\.plugins\org.eclipse.jdt.core
 1113885531.index
 677067079.index
-3092381115.index
 3219703128.index
 866505641.index
 4175806384.index
