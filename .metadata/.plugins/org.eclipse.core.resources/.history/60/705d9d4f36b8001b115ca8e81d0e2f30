@@ -1,7 +1,0 @@
-package utility;
-
-import org.testng.ITestListener;
-
-public class ListernersTestNG implements ITestListener {
-
-}
